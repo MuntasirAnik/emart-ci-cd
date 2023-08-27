@@ -2,6 +2,7 @@ name: emart
 
 on:
   push:
+    branches: [master]
 
 jobs:
   build:
