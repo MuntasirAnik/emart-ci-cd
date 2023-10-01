@@ -7,7 +7,7 @@ import NavigationMenuDrawer from "./NavigationMenuDrawer";
 import EmartIcon from "./emartIcon";
 import UserWidgetDrawer from "./UserWidgetDrawer";
 import { GiShoppingCart } from "react-icons/gi";
-import Modal from "./Modal/Modal";
+import Modal from "../../Modal/Modal";
 
 const Navbar = () => {
   const [open, setUserOpen] = useState<boolean>(false);

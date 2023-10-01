@@ -1,7 +1,20 @@
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
+import { useSession, signIn, signOut } from "next-auth/react";
+import { useRouter } from "next/router";
 
 const Login = () => {
+  const { data: session } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (session) {
+      router.push({
+        pathname: "/",
+      });
+    }
+  }, [session]);
+
   return (
     <div>
       <section className="bg-gray-50 dark:bg-gray-900">
@@ -85,6 +98,39 @@ const Login = () => {
                 >
                   Sign in
                 </button>
+                <div className="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300">
+                  <p className="mx-4 mb-0 text-center font-semibold dark:text-white">
+                    Or
+                  </p>
+                </div>
+                <div className="flex justify-between">
+                  <button
+                    className="px-2 py-2 border flex gap-2 border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150"
+                    onClick={() => signIn()}
+                  >
+                    <img
+                      className="w-8 h-6"
+                      src="/SVG/logo/google.svg"
+                      loading="lazy"
+                      alt="google logo"
+                    />
+                    <span className="dark:text-white text-sm">
+                      Login with Google
+                    </span>
+                  </button>
+                  <button className="px-2 py-2 border flex gap-2 border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150">
+                    <img
+                      className="w-8 h-6"
+                      src="/SVG/logo/facebook.svg"
+                      loading="lazy"
+                      alt="google logo"
+                    />
+                    <span className="dark:text-white text-sm">
+                      Login with Facebook
+                    </span>
+                  </button>
+                </div>
+
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400 flex ">
                   Don’t have an account yet ?
                   <Link

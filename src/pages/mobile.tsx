@@ -16,7 +16,7 @@ const Mobile = () => {
               <div className="block relative h-66 rounded overflow-hidden">
                 <img
                   alt="ecommerce"
-                  className="m-auto h-[36vh] block hover:scale-110 duration-500 transition ease-in-out delay-250"
+                  className="m-auto h-[36vh] block hover:scale-110 duration-700 transition ease-in-out delay-850"
                   src={item.url}
                 />
               </div>

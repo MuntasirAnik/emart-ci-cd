@@ -6,7 +6,7 @@ const Signup = () => {
     <div>
       <div>
         <section className="bg-gray-50 dark:bg-gray-900">
-          <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+          <div className="flex flex-col items-center justify-center px-6  mx-auto md:h-screen lg:py-0">
             <a
               href="#"
               className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
@@ -76,6 +76,31 @@ const Signup = () => {
                   >
                     Sign Up
                   </button>
+                  <div className="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300">
+                    <p className="mx-4 mb-0 text-center font-semibold dark:text-white">
+                      Or
+                    </p>
+                  </div>
+                  <div className="flex justify-between">
+                    <button className="px-2 py-2 border flex gap-2 border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150">
+                      <img
+                        className="w-8 h-6"
+                        src="/SVG/logo/google.svg"
+                        loading="lazy"
+                        alt="google logo"
+                      />
+                      <span className="text-sm">sign with Google</span>
+                    </button>
+                    <button className="px-2 py-2 border flex gap-2 border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150">
+                      <img
+                        className="w-8 h-6"
+                        src="/SVG/logo/facebook.svg"
+                        loading="lazy"
+                        alt="google logo"
+                      />
+                      <span className="text-sm">sign with Facebook</span>
+                    </button>
+                  </div>
                   <p className="text-sm font-light text-gray-500 dark:text-gray-400 flex">
                     Already Have an Account ?
                     <Link

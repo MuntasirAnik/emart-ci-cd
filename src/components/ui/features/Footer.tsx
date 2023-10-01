@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <div>
       <footer className="text-gray-600 body-font">
-        <div className="container px-3 py-10 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
+        <div className="container px-6 lg:space-x-12 py-10 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
           <div className="md:mx-0 mx-auto sm:text-center md:text-left ">
             <Link className="flex justify-center md:justify-start" href={"/"}>
               <Image
@@ -22,8 +22,8 @@ const Footer = () => {
               Air plant banjo lyft occupy retro adaptogen indego
             </p>
           </div>
-          <div className="flex-grow flex flex-wrap md:pl-18 -mb-10 md:mt-0 mt-10 md:text-left text-center">
-            <div className="lg:w-[500px] md:w-1/2 w-full px-4">
+          <div className="flex-grow lg:space-x-12 flex flex-wrap md:pl-18 -mb-10 md:mt-0 mt-10 md:text-left text-center">
+            <div className="lg:w-[300px] md:w-1/2 w-full px-4">
               <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">
                 Stay Connected
               </h2>
@@ -101,9 +101,6 @@ const Footer = () => {
               <a className="text-gray-500">
                 <svg
                   fill="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
                   className="w-5 h-5"
                   viewBox="0 0 24 24"
                 >
@@ -113,9 +110,6 @@ const Footer = () => {
               <a className="ml-3 text-gray-500">
                 <svg
                   fill="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
                   className="w-5 h-5"
                   viewBox="0 0 24 24"
                 >
@@ -126,9 +120,6 @@ const Footer = () => {
                 <svg
                   fill="none"
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
                   className="w-5 h-5"
                   viewBox="0 0 24 24"
                 >
@@ -140,9 +131,6 @@ const Footer = () => {
                 <svg
                   fill="currentColor"
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="0"
                   className="w-5 h-5"
                   viewBox="0 0 24 24"
                 >
