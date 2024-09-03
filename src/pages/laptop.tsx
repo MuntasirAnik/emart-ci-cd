@@ -1,175 +1,72 @@
-import React from "react";
-import Link from "next/link";
+import React, { useEffect, useState } from "react";
+import { Card, Spin } from "antd";
+
+const { Meta } = Card;
+
+interface Product {
+  _id: string;
+  category: string;
+  name: string;
+  slug: string;
+  size: string;
+  color: string;
+  price: number;
+  currency: string;
+  availableQty: number;
+  createdAt: string;
+  updatedAt: string;
+}
 
 const Laptop = () => {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch(
+          "https://buyhere-server.vercel.app/api/v1/product"
+        );
+        const data = await response.json();
+        const laptops = data.products.filter(
+          (product: Product) => product.category === "Laptop"
+        );
+        setProducts(laptops);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
   return (
-    <div>
-      <section className='text-gray-600 body-font lg:pl-16 shadow-xl'>
-        <div className='container px-5 py-24 mx-auto'>
-          <div className='flex flex-wrap -m-4'>
-            <Link
-              href={"product/iPhone 11 pro"}
-              className='lg:w-1/5 md:w-1/2 p-4 w-full shadow-lg m-7'>
-              <div className='block relative h-46 rounded overflow-hidden'>
-                <img
-                  alt='ecommerce'
-                  className='m-auto h-[20vh] block hover:scale-110 duration-700 transition ease-in-out delay-250'
-                  src='https://m.media-amazon.com/images/I/61vFO3R5UNL._AC_UY327_FMwebp_QL65_.jpg'
-                />
-              </div>
-              <div className='text-center mt-4'>
-                <h3 className='text-gray-500 text-xs tracking-widest title-font mb-1'>
-                  Mobile
-                </h3>
-                <h2 className='text-gray-900 title-font text-lg font-medium'>
-                  iPhone 11 Pro
-                </h2>
-                <p className='mt-1'>$16.00</p>
-              </div>
-            </Link>
-            <Link
-              href={"product/iPhone 11 pro"}
-              className='lg:w-1/5 md:w-1/2 p-4 w-full shadow-lg m-7'>
-              <div className='block relative h-46 rounded overflow-hidden'>
-                <img
-                  alt='ecommerce'
-                  className='m-auto h-[20vh] block hover:scale-110 duration-700 transition ease-in-out delay-250'
-                  src='https://m.media-amazon.com/images/I/61lYIKPieDL._AC_UY327_FMwebp_QL65_.jpg'
-                />
-              </div>
-              <div className='text-center mt-4'>
-                <h3 className='text-gray-500 text-xs tracking-widest title-font mb-1'>
-                  Mobile
-                </h3>
-                <h2 className='text-gray-900 title-font text-lg font-medium'>
-                  iPhone 11 Pro
-                </h2>
-                <p className='mt-1'>$16.00</p>
-              </div>
-            </Link>
-            <Link
-              href={"product/iPhone 11 pro"}
-              className='lg:w-1/5 md:w-1/2 p-4 w-full shadow-lg m-7'>
-              <div className='block relative h-46 rounded overflow-hidden'>
-                <img
-                  alt='ecommerce'
-                  className='m-auto h-[20vh] block hover:scale-110 duration-700 transition ease-in-out delay-250'
-                  src='https://m.media-amazon.com/images/I/71f5Eu5lJSL._AC_UY327_FMwebp_QL65_.jpg'
-                />
-              </div>
-              <div className='text-center mt-4'>
-                <h3 className='text-gray-500 text-xs tracking-widest title-font mb-1'>
-                  Mobile
-                </h3>
-                <h2 className='text-gray-900 title-font text-lg font-medium'>
-                  iPhone 11 Pro
-                </h2>
-                <p className='mt-1'>$16.00</p>
-              </div>
-            </Link>
-            <Link
-              href={"product/iPhone 11 pro"}
-              className='lg:w-1/5 md:w-1/2 p-4 w-full shadow-lg m-7'>
-              <div className='block relative h-46 rounded overflow-hidden'>
-                <img
-                  alt='ecommerce'
-                  className='m-auto h-[20vh] block hover:scale-110 duration-700 transition ease-in-out delay-250'
-                  src='https://m.media-amazon.com/images/I/51KhexN7YkL._AC_UY327_FMwebp_QL65_.jpg'
-                />
-              </div>
-              <div className='text-center mt-4'>
-                <h3 className='text-gray-500 text-xs tracking-widest title-font mb-1'>
-                  Mobile
-                </h3>
-                <h2 className='text-gray-900 title-font text-lg font-medium'>
-                  iPhone 11 Pro
-                </h2>
-                <p className='mt-1'>$16.00</p>
-              </div>
-            </Link>
-            <Link
-              href={"product/iPhone 11 pro"}
-              className='lg:w-1/5 md:w-1/2 p-4 w-full shadow-lg m-7'>
-              <div className='block relative h-46 rounded overflow-hidden'>
-                <img
-                  alt='ecommerce'
-                  className='m-auto h-[20vh] block hover:scale-110 duration-700 transition ease-in-out delay-250'
-                  src='https://m.media-amazon.com/images/I/615XpdZhf3L._AC_UY327_FMwebp_QL65_.jpg'
-                />
-              </div>
-              <div className='text-center mt-4'>
-                <h3 className='text-gray-500 text-xs tracking-widest title-font mb-1'>
-                  Mobile
-                </h3>
-                <h2 className='text-gray-900 title-font text-lg font-medium'>
-                  iPhone 11 Pro
-                </h2>
-                <p className='mt-1'>$16.00</p>
-              </div>
-            </Link>
-            <Link
-              href={"product/iPhone 11 pro"}
-              className='lg:w-1/5 md:w-1/2 p-4 w-full shadow-lg m-7'>
-              <div className='block relative h-46 rounded overflow-hidden'>
-                <img
-                  alt='ecommerce'
-                  className='m-auto h-[20vh] block hover:scale-110 duration-700 transition ease-in-out delay-250'
-                  src='https://m.media-amazon.com/images/I/71yDOEmg2NL._AC_UL480_FMwebp_QL65_.jpg'
-                />
-              </div>
-              <div className='text-center mt-4'>
-                <h3 className='text-gray-500 text-xs tracking-widest title-font mb-1'>
-                  Mobile
-                </h3>
-                <h2 className='text-gray-900 title-font text-lg font-medium'>
-                  iPhone 11 Pro
-                </h2>
-                <p className='mt-1'>$16.00</p>
-              </div>
-            </Link>
-            <Link
-              href={"product/iPhone 11 pro"}
-              className='lg:w-1/5 md:w-1/2 p-4 w-full shadow-lg m-7'>
-              <div className='block relative h-46 rounded overflow-hidden'>
-                <img
-                  alt='ecommerce'
-                  className='m-auto h-[20vh] block hover:scale-110 duration-700 transition ease-in-out delay-250'
-                  src='https://m.media-amazon.com/images/I/61QGMX0Qy6L._AC_UY327_FMwebp_QL65_.jpg'
-                />
-              </div>
-              <div className='text-center mt-4'>
-                <h3 className='text-gray-500 text-xs tracking-widest title-font mb-1'>
-                  Mobile
-                </h3>
-                <h2 className='text-gray-900 title-font text-lg font-medium'>
-                  iPhone 11 Pro
-                </h2>
-                <p className='mt-1'>$16.00</p>
-              </div>
-            </Link>
-            <Link
-              href={"product/iPhone 11 pro"}
-              className='lg:w-1/5 md:w-1/2 p-4 w-full shadow-lg m-7'>
-              <div className='block relative h-46 rounded overflow-hidden'>
-                <img
-                  alt='ecommerce'
-                  className='m-auto h-[20vh] block hover:scale-110 duration-700 transition ease-in-out delay-250'
-                  src='https://m.media-amazon.com/images/I/7189iXimfWL._AC_UL480_FMwebp_QL65_.jpg'
-                />
-              </div>
-              <div className='text-center mt-4'>
-                <h3 className='text-gray-500 text-xs tracking-widest title-font mb-1'>
-                  Mobile
-                </h3>
-                <h2 className='text-gray-900 title-font text-lg font-medium'>
-                  iPhone 11 Pro
-                </h2>
-                <p className='mt-1'>$16.00</p>
-              </div>
-            </Link>
-          </div>
-        </div>
-      </section>
+    <div
+      style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
+    >
+      {loading ? (
+        <Spin size="large" />
+      ) : (
+        products.map((product) => (
+          <Card
+            key={product._id}
+            hoverable
+            style={{ margin: 20, width: 240 }}
+            cover={
+              <img
+                alt={product.name}
+                src="https://dvf83rt16ac4w.cloudfront.net/upload/product/20211110_1636549088_550946.png"
+              />
+            }
+          >
+            <Meta
+              title={product.name}
+              description={`${product.currency}${product.price}`}
+            />
+          </Card>
+        ))
+      )}
     </div>
   );
 };
