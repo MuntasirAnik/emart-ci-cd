@@ -1,40 +1,74 @@
-import Link from "next/link";
-import React from "react";
-import MobileList from "../components/data/mobileData";
+import React, { useEffect, useState } from "react";
+import { Card, Spin } from "antd";
 
-const Mobile = () => {
+const { Meta } = Card;
+
+interface Product {
+  _id: string;
+  category: string;
+  name: string;
+  slug: string;
+  size: string;
+  color: string;
+  price: number;
+  currency: string;
+  availableQty: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+const Laptop = () => {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch(
+          "https://buyhere-server.vercel.app/api/v1/product"
+        );
+        const data = await response.json();
+        const laptops = data.products.filter(
+          (product: Product) => product.category === "Mobile"
+        );
+        setProducts(laptops);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
   return (
-    <section className="text-gray-600 body-font lg:pl-16 shadow-sm">
-      <div className="container px-5 py-24 mx-auto">
-        <div className="flex flex-wrap -m-4">
-          {MobileList.map((item, index) => (
-            <Link
-              key={index}
-              href={`product/${item.slug}`}
-              className="lg:w-1/5 md:w-1/2 p-4 w-full shadow-lg m-7"
-            >
-              <div className="block relative h-66 rounded overflow-hidden">
-                <img
-                  alt="ecommerce"
-                  className="m-auto h-[36vh] block hover:scale-110 duration-700 transition ease-in-out delay-850"
-                  src={item.url}
-                />
-              </div>
-              <div className="text-center mt-4">
-                <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
-                  {item.category}
-                </h3>
-                <h2 className="text-gray-900 title-font text-lg font-medium">
-                  {item.name}
-                </h2>
-                <p className="mt-1">{item.price}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div>
-    </section>
+    <div
+      style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
+    >
+      {loading ? (
+        <Spin size="large" />
+      ) : (
+        products.map((product) => (
+          <Card
+            key={product._id}
+            hoverable
+            style={{ margin: 20, width: 240 }}
+            cover={
+              <img
+                alt={product.name}
+                src="https://adminapi.applegadgetsbd.com/storage/media/large/iPhone-14-Purple-6116.jpg"
+              />
+            }
+          >
+            <Meta
+              title={product.name}
+              description={`${product.currency}${product.price}`}
+            />
+          </Card>
+        ))
+      )}
+    </div>
   );
 };
 
-export default Mobile;
+export default Laptop;
